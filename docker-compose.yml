@@ -1,0 +1,14 @@
+version: "3"
+services:
+  springbootapp:
+    image: springbootapp:latest
+    container_name: springbootapp
+    expose:
+      - 8080
+    ports:
+      - 8088:8080
+    restart: unless-stopped
+networks:
+  default:
+    external:
+      name: postgres-network

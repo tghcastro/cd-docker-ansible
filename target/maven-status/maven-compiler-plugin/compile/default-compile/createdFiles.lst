@@ -1,0 +1,6 @@
+com\example\demo\DemoApplication.class
+com\example\demo\RestService.class
+com\example\demo\BookEntity.class
+com\example\demo\BookRepository.class
+com\example\demo\BookController.class
+com\example\demo\ServletInitializer.class
