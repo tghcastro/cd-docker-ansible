@@ -18,7 +18,9 @@ App created based on the following article:
 * Docker
 
     `docker build -t tghcastro/cd-docker-ansible .`
+    `docker build -t tghcastro/cd-docker-ansible-tests -f docker/tests/Dockerfile .`
 
     `docker run -p 7000:8070 -e SPRING_PROFILES_ACTIVE=dev tghcastro/cd-docker-ansible:latest`
-    `docker run --entrypoint "/usr/local/bin/entrypoint.sh" tghcastro/cd-docker-ansible:latest`
+    `docker run -it -p 7000:8071 tghcastro/cd-docker-ansible-tests:latest`
+    `docker run --entrypoint "sudo apt update" tghcastro/cd-docker-ansible:latest`
 
