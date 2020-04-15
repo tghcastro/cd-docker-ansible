@@ -1,15 +1,12 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8
 MAINTAINER Thiago de Castro <tghcastro@gmail.com>
 
 ENV TERM=xterm-256color
 
-EXPOSE 8082
+EXPOSE 8080
 
-RUN mkdir scripts
+COPY Scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 
-ADD Scripts/entrypoint.sh /scripts/entrypoint.sh
-RUN chmod +x /scripts/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-WORKDIR /scripts
-
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
