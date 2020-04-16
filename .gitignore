@@ -1,3 +1,4 @@
 /.idea/
 /target/
 /cd-docker-ansible.iml
+/target/**
