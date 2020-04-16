@@ -16,11 +16,17 @@ App created based on the following article:
     `mvn clean install`
 
 * Docker
-
-    `docker build -t tghcastro/cd-docker-ansible .`
+    
+    Tips
+    `docker ps -a -q | % { docker rm $_ }`
+    `docker images -a -q | %{ docker rmi $_ }`
+    
+    Base Image
+    `docker build -t tghcastro/cd-docker-ansible -f docker/base/Dockerfile .`
+    
+    Tests Image
     `docker build -t tghcastro/cd-docker-ansible-tests -f docker/tests/Dockerfile .`
+    `docker run -v /tmp/maven:/root/.m2/ --rm --name testsenv --entrypoint true tghcastro/cd-docker-ansible-tests:latest`
+    `docker run -v /tmp/maven:/root/.m2/ --rm --name testsenv tghcastro/cd-docker-ansible-tests:latest`
 
-    `docker run -p 7000:8070 -e SPRING_PROFILES_ACTIVE=dev tghcastro/cd-docker-ansible:latest`
-    `docker run -it -p 7000:8071 tghcastro/cd-docker-ansible-tests:latest`
-    `docker run --entrypoint "sudo apt update" tghcastro/cd-docker-ansible:latest`
 

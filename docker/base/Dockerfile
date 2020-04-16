@@ -5,8 +5,6 @@ ENV TERM=xterm-256color
 
 EXPOSE 8080
 
-COPY Scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
-
+COPY docker/base/Scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
-
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

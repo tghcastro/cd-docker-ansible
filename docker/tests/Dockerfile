@@ -7,6 +7,8 @@ RUN apt-get -y update && \
     apt-get -y install maven && \
     mvn --version
 
+VOLUME /root/.m2/
+
 RUN mkdir /app
 COPY . /app
 WORKDIR /app

@@ -1,3 +1,5 @@
 #!/bin/bash
 
-exec echo "running tests image"
+echo "Env:$ENV"
+
+mvn clean install
