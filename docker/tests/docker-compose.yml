@@ -1,0 +1,32 @@
+version: "3.7"
+services:
+  test:
+    container_name: test
+    build:
+      context: ../../
+      dockerfile: docker/tests/Dockerfile
+    volumes:
+      - maven-volume:/root/.m2/
+    networks:
+      - test-network
+
+  postgres-test:
+    image: postgres
+    container_name: postgres-test
+    environment:
+      - ENV=TEST
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    volumes:
+      - postgres-test-volume:/var/lib/postgresql/data
+    networks:
+      - test-network
+    restart: unless-stopped
+
+volumes:
+  maven-volume:
+  postgres-test-volume:
+
+networks:
+  test-network:
+    driver: bridge

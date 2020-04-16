@@ -20,6 +20,10 @@ App created based on the following article:
     Tips
     `docker ps -a -q | % { docker rm $_ }`
     `docker images -a -q | %{ docker rmi $_ }`
+    `docker-compose.exe kill`
+    
+    Ansible Image
+    `docker build -t tghcastro/ansible -f ansible/docker/Dockerfile .`
     
     Base Image
     `docker build -t tghcastro/cd-docker-ansible -f docker/base/Dockerfile .`
@@ -28,5 +32,7 @@ App created based on the following article:
     `docker build -t tghcastro/cd-docker-ansible-tests -f docker/tests/Dockerfile .`
     `docker run -v /tmp/maven:/root/.m2/ --rm --name testsenv --entrypoint true tghcastro/cd-docker-ansible-tests:latest`
     `docker run -v /tmp/maven:/root/.m2/ --rm --name testsenv tghcastro/cd-docker-ansible-tests:latest`
+    `docker-compose.exe -f docker\tests\docker-compose.yml up`
+
 
 
