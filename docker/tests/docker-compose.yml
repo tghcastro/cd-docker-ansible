@@ -1,20 +1,20 @@
 version: "3.7"
 services:
-  ci-test:
-    container_name: ci-test
+  ci-build:
+    container_name: ci-build
     build:
       context: ../../
       dockerfile: docker/tests/Dockerfile
     volumes:
       - maven-volume:/root/.m2/
     networks:
-      - ci-test-network
+      - ci-network
     ports:
       - 8888:8080
     expose:
       - 8080
     links:
-      - ci-postgres-test
+      - ci-postgres
 
   ci-ansible-agent:
     container_name: ci-ansible-agent
@@ -22,24 +22,24 @@ services:
     volumes:
       - ../../ansible/probe.yml:/ansible/site.yml
     links:
-      - ci-postgres-test
+      - ci-postgres
     environment:
-      PROBE_HOST: "ci-postgres-test"
+      PROBE_HOST: "ci-postgres"
       PROBE_PORT: "5432"
     networks:
-      - ci-test-network
+      - ci-network
 
-  ci-postgres-test:
+  ci-postgres:
     image: postgres
-    container_name: ci-postgres-test
+    container_name: ci-postgres
     environment:
-      - ENV=TEST
+      - ENV=CI
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
     volumes:
-      - postgres-test-volume:/var/lib/postgresql/data
+      - postgres-volume:/var/lib/postgresql/data
     networks:
-      - ci-test-network
+      - ci-network
     expose:
       - 5432
     ports:
@@ -48,8 +48,8 @@ services:
 
 volumes:
   maven-volume:
-  postgres-test-volume:
+  postgres-volume:
 
 networks:
-  ci-test-network:
+  ci-network:
     driver: bridge

@@ -1,7 +1,7 @@
 FROM tghcastro/cd-docker-ansible:latest
 
-ENV ENV=TESTS
-ENV SPRING_PROFILES_ACTIVE=TESTS
+ENV ENV=CI
+ENV SPRING_PROFILES_ACTIVE=CI
 
 RUN apt-get -y update && \
     apt-get -y install maven && \
