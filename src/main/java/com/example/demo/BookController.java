@@ -1,10 +1,9 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,9 +24,10 @@ public class BookController {
         return bookRepository.findAll();
     }
 
-    @GetMapping
-    @RequestMapping("test")
-    public String test() {
-        return "OK";
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public BookEntity create(@RequestBody final BookEntity session){
+        // How should we validate data?
+        return bookRepository.saveAndFlush(session);
     }
 }

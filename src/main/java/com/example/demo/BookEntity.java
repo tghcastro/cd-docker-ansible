@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class BookEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
@@ -35,5 +35,15 @@ public class BookEntity {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    @Override
+    public boolean equals(Object bookToCompare) {
+        if (this == bookToCompare) return true;
+        if (bookToCompare == null || getClass() != bookToCompare.getClass()) return false;
+        BookEntity book = (BookEntity) bookToCompare;
+        return this.getId() == book.getId() &&
+                this.getTitle().equals(book.getTitle()) &&
+                this.getAuthor().equals(book.getAuthor());
     }
 }
