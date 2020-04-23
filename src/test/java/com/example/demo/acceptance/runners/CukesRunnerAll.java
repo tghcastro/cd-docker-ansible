@@ -14,6 +14,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
         plugin = { "pretty", "json:target/cucumber.json"},
         strict = true //Fail if undefined/pending steps
 )
-public class CukesRunnerTests {
+public class CukesRunnerAll {
 
 }

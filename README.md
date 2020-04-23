@@ -16,7 +16,7 @@ App created based on the following article:
 
     `mvn clean install`
     
-    `mvn test -Dtest=CukesRunnerTests`
+    `mvn test -Dtest=CukesRunnerAll`
 
 * Docker
     
