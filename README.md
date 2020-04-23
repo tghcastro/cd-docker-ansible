@@ -12,11 +12,13 @@ App created based on the following article:
 
 ### Some commands
 
-* Maven
+* Basic
 
     `mvn clean install`
     
     `mvn test -Dtest=CukesRunnerAll`
+    
+    `java -jar -Dspring.profiles.active=local .\target\cd-docker-ansible-1.0.0.jar`
 
 * Docker
     
@@ -48,7 +50,9 @@ App created based on the following article:
     
     `docker run -v /tmp/maven:/root/.m2/ --rm --name testsenv tghcastro/cd-docker-ansible-tests:latest`
     
-    `docker-compose.exe -f docker\tests\docker-compose.yml up -d  --remove-orphans`
+    `docker-compose kill`
+    
+    `docker-compose.exe -f docker\tests\docker-compose.yml up -d --remove-orphans`
     
     `docker-compose.exe -f docker\tests\docker-compose.yml up -d ci-postgres`
     
