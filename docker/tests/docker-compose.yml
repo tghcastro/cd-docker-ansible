@@ -5,6 +5,7 @@ services:
     build:
       context: ../../
       dockerfile: docker/tests/Dockerfile
+    image: tghcastro/cd-docker-ansible-ci-build
     volumes:
       - maven-volume:/root/.m2/
     networks:

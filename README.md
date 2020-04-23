@@ -8,6 +8,7 @@ App created based on the following article:
 
 - Java
 - Docker
+- Configure env var on Intellij: SPRING_PROFILES_ACTIVE=local
 
 ### Some commands
 
